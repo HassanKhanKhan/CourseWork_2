@@ -9,6 +9,11 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Orign", "*"); // Allow cross-origin requests
+  res.header("Access-Control-Allow-Headers", "*"); // Allow all headers
+  next();
+});
 
 // logger middleware
 app.use((req, res, next) => {
