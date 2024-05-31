@@ -9,20 +9,16 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Orign", "*"); // Allow cross-origin requests
-  res.header("Access-Control-Allow-Headers", "*"); // Allow all headers
-  next();
-});
 
-// logger middleware
+// Logger middleware
 app.use((req, res, next) => {
   console.log("Request IP: " + req.url);
   console.log("Request date: " + new Date());
   next();
 });
 
-const connectionString = "mongodb+srv://hassankhan:3Hfkhan800774256@cluster0.txjv8ql.mongodb.net/";
+const connectionString =
+  "mongodb+srv://hassankhan:3Hfkhan800774256@cluster0.txjv8ql.mongodb.net/";
 
 const databaseName = "CW2";
 
@@ -137,22 +133,6 @@ MongoClient.connect(connectionString, (err, client) => {
       }
     });
 
-    app.get("/collection/lesson/search", (req, res, next) => {
-      let query_str = req.query.key_word;
-      Lesson.find({
-        $or: [
-          { subject: { $regex: query_str, $options: "i" } },
-          { location: { $regex: query_str, $options: "i" } }
-        ]
-      }).toArray((err, lessons) => {
-        if (err) {
-          res.status(500).send("Error retrieving lessons from the database");
-        } else {
-          res.json(lessons);
-        }
-      });
-    });
-
     app.use(function (req, res, next) {
       var filePath = path.join(__dirname, "img", req.url);
       fs.stat(filePath, function (err, fileInfo) {
@@ -175,7 +155,7 @@ MongoClient.connect(connectionString, (err, client) => {
 
     const PORT = process.env.PORT || 3000;
     app.listen(PORT, () => {
-      console.log(`Server is running on port ${PORT}`);
+      console.log(Server is running on port ${PORT});
     });
   }
 });
