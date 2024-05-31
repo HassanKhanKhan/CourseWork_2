@@ -9,4 +9,4 @@
 - **Live Deployment:** [Live App](https://hassankhankhan.github.io/CourseWork_2/)
 - **Render Backend Link:** [Render Backend](https://coursework-2-3emb.onrender.com)
 
-This repository contains the frontend code for Coursework 2 of the Web-Based Mobile App Development module (CST3145).
+This repository contains the backend code for Coursework 2 of the Web-Based Mobile App Development module (CST3145).
