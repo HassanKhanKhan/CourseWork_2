@@ -63,25 +63,25 @@ MongoClient.connect(connectionString, (err, client) => {
     });
 
     app.put("/collection/:collectionName/:id", (req, res, next) => {
-      try {
-        const objectID = require("mongodb").ObjectID;
+  try {
+    const objectID = require("mongodb").ObjectID;
 
-        req.connection.updateOne(
-          { _id: new objectID(req.params.id) },
-          { $inc: { space: -1 * 1 } }, // Decrementing space by 1
-          { safe: true, multi: false },
-          (e, result) => {
-            if (e) return next(e);
-            res.send(
-              result.result.n === 1 ? { msg: "Success" } : { msg: "error" }
-            );
-          }
+    req.connection.updateOne(
+      { _id: new objectID(req.params.id) },
+      { $inc: { space: -1 } }, // Decrementing space by 1
+      (e, result) => {
+        if (e) return next(e);
+        res.send(
+          result.modifiedCount === 1 ? { msg: "Success" } : { msg: "error" }
         );
-      } catch (ex) {
-        console.log("🚀 ~ app.put ~ ex:", ex);
-        next(ex); // Pass error to the error handler
       }
-    });
+    );
+  } catch (ex) {
+    console.log("🚀 ~ app.put ~ ex:", ex);
+    next(ex); // Pass error to the error handler
+  }
+});
+
 
     // Search route with regular expression and case-insensitive matching
     app.get("/collection/lesson/search", (req, res, next) => {
