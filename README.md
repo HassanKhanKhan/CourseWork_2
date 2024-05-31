@@ -17,6 +17,7 @@ This repository contains the codebase for Coursework 2 of the Web-Based Mobile A
 
 ### Live Deployment:
 [Live App](https://hassankhankhan.github.io/CourseWork_2/)
+[GitHub Page (Live link)](https://hassankhankhan.github.io/CourseWork_2/)
 
 ### Render Backend Link:
 [Render Backend link](https://coursework-2-3emb.onrender.com)
